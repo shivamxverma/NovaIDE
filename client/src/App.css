@@ -1,0 +1,155 @@
+/* Define cool color variables */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea, #764ba2);
+  --terminal-bg: #0d1117;
+  --neon-glow: #39ff14;
+  --header-bg: linear-gradient(90deg, #1e3c72, #2a5298);
+  --shadow-color: rgba(57, 255, 20, 0.3);
+  --text-glow: #ffffff;
+}
+
+/* Main app styling with cool background */
+.app {
+  min-height: 100vh;
+  background: linear-gradient(45deg, #0d0d2b, #1a1a3d);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cool animated background effect */
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(57, 255, 20, 0.1) 0%, transparent 70%);
+  animation: pulse 8s infinite;
+  z-index: 0;
+}
+
+/* Container styling */
+.editor-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+/* Stylish header with gradient and glow */
+.terminal-header {
+  background: var(--header-bg);
+  color: var(--text-glow);
+  padding: 15px 20px;
+  border-radius: 12px 12px 0 0;
+  font-family: 'Fira Mono', monospace;
+  font-size: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 0 15px var(--shadow-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-header::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shine 3s infinite;
+}
+
+/* Terminal container with neon effects */
+.terminal-container {
+  background: var(--terminal-bg);
+  border-radius: 0 0 12px 12px;
+  padding: 15px;
+  box-shadow: 0 0 20px var(--shadow-color),
+              inset 0 0 10px rgba(57, 255, 20, 0.1);
+  border: 1px solid rgba(57, 255, 20, 0.2);
+  transition: all 0.3s ease;
+}
+
+.terminal-container:hover {
+  box-shadow: 0 0 30px var(--shadow-color),
+              inset 0 0 15px rgba(57, 255, 20, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Animation keyframes */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app {
+    padding: 10px;
+  }
+
+  .editor-container {
+    max-width: 100%;
+  }
+
+  .terminal-header {
+    font-size: 16px;
+    padding: 12px 15px;
+  }
+
+  .terminal-container {
+    padding: 10px;
+  }
+}
+
+/* Enhance terminal appearance */
+#terminal {
+  border-radius: 8px;
+}
+
+.xterm .xterm-viewport {
+  background: transparent !important;
+}
+
+.xterm .xterm-rows {
+  text-shadow: 0 0 5px var(--neon-glow);
+}
